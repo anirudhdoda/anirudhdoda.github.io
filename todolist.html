@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T0-Do List</title>
+</head>
+<body>
+    <div class="container">
+		<div class="formBox">
+			<h2>To-Do list</h2>
+			<div name="todo" id="todo">
+				<div>
+					<input  id='event' type="text" name="event" required>
+					<label>Event</label>
+				</div>
+				<div class="inputBox">
+					<input id='time' type="time" name="time" required>
+					<label type="time">Time</label>
+				</div>
+				<button id="submit-form">Submit</button>
+            </div>
+            <p id='list'></p>
+        </div>
+        </div>
+</body>
+<script>
+    var array = [];
+    var button = document.getElementById('submit-form');
+    button.addEventListener("click", function(){
+        var eventInput=document.getElementById('event');
+        var timeInput=document.getElementById('time');
+        var obj = {
+            'event':eventInput.value,
+            'time':timeInput.value
+        };
+        array.push(obj);
+        localStorage.setItem('obj',JSON.stringify(array));
+        document.getElementById('list').innerHTML= JSON.stringify(array);
+    });
+
+
+</script>
+</html>
